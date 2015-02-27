@@ -24,8 +24,8 @@ describe("interpolator service", function(){
                 
             }
         ]));
-        //this.interpolator = require("../lib/interpolate.js");
-        this.interpolator = proxyquire("../lib/interpolate.js", {fs: {
+
+        this.interpolator = proxyquire("../index.js", {fs: {
             readFileSync: this.fsStub
             
         }});

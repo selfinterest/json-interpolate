@@ -20,7 +20,7 @@
 
 
 
-var interpolator = (function(){
+var interpolater = (function(){
     var Handlebars = require("handlebars")
         , _ = require("underscore")
         , service = {}
@@ -95,4 +95,4 @@ var interpolator = (function(){
 })();
 
 
-module.exports = interpolator;
+module.exports = interpolater;

@@ -1,5 +1,5 @@
 {
-  "name": "json-interpolate",
+  "name": "json-interpolater",
   "version": "1.0.0",
   "description": "Interpolates JSON files using a simple interface",
   "main": "index.js",
