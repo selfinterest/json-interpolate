@@ -80,6 +80,10 @@ describe("interpolator service", function(){
         });
     });
 
+    describe("parser -- recursive option", function(){
+        
+        
+    });
 
     describe("removeQuotes method", function(){
        it("should, given a JSON string with interpolation marks, remove the quotation marks around the interpolation marks", function(){

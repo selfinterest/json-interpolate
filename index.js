@@ -42,6 +42,12 @@ var interpolater = (function(){
 
     service._cache = {};
 
+    service.interpolationFunctions = {
+        fns: {},
+        results: {}
+    };
+
+    
     service.defaultHelpers = {
         "import": function(filename){
 
@@ -58,13 +64,22 @@ var interpolater = (function(){
             }
 
             return new Handlebars.SafeString(fileContents);
+        },
+        "replaceWithResult": function(fnName){
+            return service.interpolationFunctions.results[fnName];
         }
     };
+    
+    
 
     service.registerHelper = function(helperName, helperFn){
         Handlebars.registerHelper(helperName, helperFn);
     };
 
+    service.registerInterpolationFunction = function(fnName, fn){
+        service.interpolationFunctions.fns[fnName] = fn;
+    };
+    
     //register default helpers
     Object.keys(service.defaultHelpers).forEach(function(helperName){
        service.registerHelper(helperName, service.defaultHelpers[helperName]);
