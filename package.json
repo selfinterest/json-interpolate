@@ -6,6 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Terrence C. Watson <parliamentaryterrence@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/selfinterest/json-interpolate",
+  "dependencies": {
+    "handlebars": "^3.0.0",
+    "underscore": "^1.8.2"
+  },
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0",
+    "proxyquire": "^1.3.1",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.7.0"
+  }
 }
