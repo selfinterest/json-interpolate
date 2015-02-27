@@ -20,5 +20,7 @@ Then loading `mainFile.json` into a string and running `interpolate.parse()` on 
         "cats": ["Senea", "Amala", "Herbie", "Agnes"]
     }
 
+The idea is to run the interpolator before you send the string to `JSON.parse()`.
+
 That's all for now!
         

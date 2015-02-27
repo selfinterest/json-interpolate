@@ -3,7 +3,7 @@
  */
 var expect = require("chai").expect;
 var proxyquire = require("proxyquire");
-describe("interpolator service parse method", function(){
+describe("interpolator service", function(){
 
     beforeEach(function(){
         this.interpolator = proxyquire("../lib/interpolate.js", {
@@ -24,14 +24,31 @@ describe("interpolator service parse method", function(){
         })
     });
 
-    it("should, given a string of JSON with no interpolation, return that string of JSON unmodified", function(){
-        var str = JSON.stringify({
-            "name": "Terrence",
-            "hobbies": ["sleeping", "eating", "programming"]
+    describe("parse method", function(){
+
+        it("should, given a string of JSON with no interpolation, return that string of JSON unmodified", function(){
+            var str = JSON.stringify({
+                "name": "Terrence",
+                "hobbies": ["sleeping", "eating", "programming"]
+            });
+            var result = this.interpolator.parse(str);
+            expect(result).to.equal(str);
         });
-        var result = this.interpolator.parse(str);
-        expect(result).to.equal(str);
+
+
+
+        it("should, given a string of JSON with the import directive, return a modified JSON string", function(){
+            var str = JSON.stringify({
+                "name": "Terrence",
+                "hobbies": ["sleeping", "eating", "programming"],
+                "friends": "{{ import 'friends.json' }}"
+            });
+
+            var result = this.interpolator.parse(str);
+            expect(result.indexOf("Jones")).to.not.equal(-1);
+        });
     });
+
 
     describe("removeQuotes method", function(){
        it("should, given a JSON string with interpolation marks, remove the quotation marks around the interpolation marks", function(){
@@ -49,16 +66,4 @@ describe("interpolator service parse method", function(){
        });
     });
 
-
-    it("should, given a string of JSON with the import directive, return a modified JSON string", function(){
-       var str = JSON.stringify({
-           "name": "Terrence",
-           "hobbies": ["sleeping", "eating", "programming"],
-           "friends": "{{ import 'friends.json' }}"
-       });
-
-
-       var result = this.interpolator.parse(str);
-        console.log(result);
-    });
 });
